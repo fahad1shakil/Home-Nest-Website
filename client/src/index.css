@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@plugin 'daisyui';
+
+@theme {
+  --color-primary: #E91E63;
+  --color-secondary: #0f172a;
+  --color-accent: #f43f5e;
+  --color-neutral: #0f172a;
+  --color-base-100: #ffffff;
+  --color-base-200: #f8fafc;
+  --color-base-300: #f1f5f9;
+}
+
+@layer base {
+  body {
+    @apply bg-base-100 text-neutral font-sans transition-colors duration-300;
+  }
+
+  .dark body {
+    background-color: #020617;
+    color: #f8fafc;
+  }
+  
+  .dark .text-neutral, 
+  .dark .text-base-content,
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark p {
+    color: #f8fafc !important;
+  }
+  
+  .dark .bg-white {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+  }
+
+  .dark .bg-gray-50, .dark .bg-base-200 {
+    background-color: #020617 !important;
+  }
+
+  .dark .border-gray-50, .dark .border-gray-100, .dark .border-base-200 {
+    border-color: #1e293b !important;
+  }
+
+  .dark input, .dark textarea, .dark select {
+    background-color: #1e293b !important;
+    color: white !important;
+    border-color: #334155 !important;
+  }
+
+  .dark .card-premium {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  }
+
+  /* Price Tag Override */
+  .price-tag {
+    color: #2563eb; /* blue-600 */
+  }
+  .dark .price-tag {
+    color: #22d3ee !important; /* vibrant cyan */
+  }
+}
+
+@layer components {
+  .btn-premium {
+    @apply relative overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 px-6 py-3 rounded-xl font-bold shadow-lg;
+    background: linear-gradient(135deg, #E91E63, #880E4F);
+    color: white;
+  }
+
+  .btn-premium:hover {
+    @apply shadow-xl brightness-110;
+  }
+
+  .card-premium {
+    @apply bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-primary/20 overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+  }
+
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
