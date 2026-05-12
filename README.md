@@ -68,7 +68,4 @@ HomeNest is a modern, full-stack MERN real estate application designed to provid
 ---
 
 ## 📄 License
-
-This project is developed as part of the Programming Hero Milestone 10 Assignment. All rights reserved.
-
 Created with ❤️ by **Fahad Shakil**
