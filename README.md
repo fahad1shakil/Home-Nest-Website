@@ -60,36 +60,6 @@ HomeNest is a modern, full-stack MERN real estate application designed to provid
 
 ---
 
-## 🛠️ Local Installation & Setup
-
-To run HomeNest on your local machine, follow these steps:
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/fahad1shakil/Home-Nest-Website.git
-cd Home-Nest-Website
-```
-
-### 2. Client Setup
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
-### 3. Server Setup
-
-```bash
-cd ../server
-npm install
-# Create a .env file and add your credentials (MONGODB_URI, etc.)
-npm run dev
-```
-
----
-
 ## 🌐 Deployment Links
 
 - **Frontend (Netlify)**: [https://homenest-fahadshakil.netlify.app](https://homenest-fahadshakil.netlify.app)
