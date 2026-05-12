@@ -172,7 +172,11 @@ app.get("/ratings", verifyFirebaseToken, async (req, res) => {
   const userEmail = req.query.email;
   const propertyName = req.query.propertyName;
   if (propertyName) {
-    const result = await ratingsCollection.find({ propertyName }).sort({ reviewDate: -1 }).toArray();
+    // Case-insensitive search that also ignores leading/trailing whitespace
+    const escapedName = propertyName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').trim();
+    const result = await ratingsCollection.find({ 
+      propertyName: { $regex: new RegExp(`^\\s*${escapedName}\\s*$`, 'i') } 
+    }).sort({ reviewDate: -1 }).toArray();
     res.send(result);
   } else if (userEmail === req.tokenEmail) {
     const result = await ratingsCollection.find({ reviewerEmail: userEmail }).toArray();

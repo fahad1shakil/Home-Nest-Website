@@ -7,38 +7,30 @@ import useAxios from "../../hooks/useAxios";
 
 const AllProperties = () => {
   const axios = useAxios();
-  // State for storing the list of all properties
   const [properties, setProperties] = useState([]);
-  // State for the search box text
   const [searchValue, setSearchValue] = useState("");
-  // State for the selected sorting option
   const [sortBy, setSortBy] = useState("newest");
-  // State to track if data is still loading
   const [loading, setLoading] = useState(true);
 
-  // Fetch properties from the server whenever the sorting option changes
   useEffect(() => {
-    setLoading(true); // Show loading screen while fetching
+    setLoading(true);
     axios.get(`/all-properties?sort=${sortBy}`)
       .then((res) => {
         setProperties(res.data);
-        setLoading(false); // Hide loading screen when data arrives
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Detailed Fetch Error:", err.response?.data || err.message);
-        setLoading(false); // Stop loading even on error to show empty state/error
+        setLoading(false);
       });
-
   }, [sortBy]);
 
-  // Client-side filtering: filter the list based on the search box text
   const filteredProperties = properties.filter((item) => {
-    if (!searchValue) return true; // If search is empty, show everything
+    if (!searchValue) return true;
     const name = item?.name || item?.propertyTitle || "";
     return name.toLowerCase().includes(searchValue.toLowerCase());
   });
 
-  // Display a loading spinner if the page is still fetching data
   if (loading) {
     return <LoadingScreen />;
   }
@@ -49,8 +41,9 @@ const AllProperties = () => {
         {/* Page Header with Titles */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
           <div className="space-y-4">
+            <h2 className="text-primary font-black uppercase tracking-[0.3em] text-sm">Discover</h2>
             <h1 className="text-4xl md:text-6xl font-black text-neutral dark:text-white tracking-tight">
-              Premium <span className="text-primary italic">Listings</span>
+              Premium <span className="text-secondary italic">Listings</span>
             </h1>
             <p className="text-gray-500 dark:text-gray-400 text-lg max-w-xl font-medium">
               Explore our hand-picked collection of luxury properties and find your next masterpiece.
@@ -93,7 +86,6 @@ const AllProperties = () => {
             <AllPropertyCard key={property._id} property={property} />
           ))
         ) : (
-          // Display this if no properties match the search criteria
           <div className="col-span-full py-20 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-base-300 dark:bg-slate-800 mb-6 text-gray-400">
               <Search className="w-10 h-10" />

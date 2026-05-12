@@ -24,7 +24,9 @@ const PropertyDetails = () => {
       setProperty(propRes.data);
       
       if (propRes.data) {
-        const reviewRes = await axiosSecure.get(`/ratings?propertyName=${propRes.data.name || propRes.data.vehicleName}`);
+        // Trim property name to ensure no trailing spaces break the search
+        const pName = (propRes.data.name || propRes.data.vehicleName || "").trim();
+        const reviewRes = await axiosSecure.get(`/ratings?propertyName=${encodeURIComponent(pName)}`);
         setReviews(reviewRes.data);
       }
     } catch (error) {
