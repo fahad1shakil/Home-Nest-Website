@@ -58,7 +58,6 @@ const Banner = () => {
       {/* Swiper component configuration */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
-        effect="fade"          // Use a smooth fade transition between slides
         navigation            // Show next/prev arrows
         pagination={{ clickable: true }} // Show dots at the bottom
         autoplay={{
@@ -80,11 +79,11 @@ const Banner = () => {
               />
 
               {/* Text overlay on top of the image */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 md:px-10">
-                <h1 className="text-4xl md:text-7xl font-black mb-6 drop-shadow-2xl tracking-tight">
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-12 md:px-10">
+                <h1 className="text-3xl md:text-7xl font-black mb-4 md:mb-6 drop-shadow-2xl tracking-tight leading-tight">
                   {slide.title}
                 </h1>
-                <p className="text-xl md:text-2xl max-w-3xl mb-10 drop-shadow-lg font-medium text-white/90">
+                <p className="text-lg md:text-2xl max-w-3xl mb-6 md:mb-10 drop-shadow-lg font-medium text-white/90">
                   {slide.description}
                 </p>
                 {/* Call to action button */}

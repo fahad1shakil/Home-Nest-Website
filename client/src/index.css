@@ -90,4 +90,19 @@
       background-position: 100% 50%;
     }
   }
+
+  /* Swiper Navigation Customization */
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 50% !important;
+    color: #3b82f6 !important;
+    transform: scale(0.75) !important;
+  }
+
+  @media (min-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      transform: scale(1.1) !important;
+    }
+  }
 }

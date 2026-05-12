@@ -120,23 +120,23 @@ const Navbar = () => {
       }`}
     >
       <Container>
-        <div className="navbar  px-4 py-2 top-0 z-50">
-          <div className="navbar-start">
+        <div className="navbar justify-between px-2 py-2 sm:px-4 top-0 z-50">
+          <div className="navbar-start flex-none w-auto">
             <button
-              className="md:hidden btn btn-ghost btn-circle me-1"
+              className="md:hidden btn btn-ghost btn-circle btn-sm me-0.5"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6 text-[#0F5660]" />
+                <X className="w-5 h-5 text-[#0F5660]" />
               ) : (
-                <Menu className="w-6 h-6 text-[#0F5660]" />
+                <Menu className="w-5 h-5 text-[#0F5660]" />
               )}
             </button>
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="p-1.5 bg-white rounded-xl shadow-lg border border-gray-100 group-hover:scale-110 transition-transform duration-300">
-                <img className="w-8 h-8 object-contain" src={logo} alt="logo" />
+            <Link to="/" className="flex items-center gap-1 sm:gap-2 group">
+              <div className="p-1 sm:p-1.5 bg-white rounded-lg sm:rounded-xl shadow-lg border border-gray-100 group-hover:scale-110 transition-transform duration-300">
+                <img className="w-6 h-6 sm:w-8 sm:h-8 object-contain" src={logo} alt="logo" />
               </div>
-              <span className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="text-base sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 HomeNest
               </span>
             </Link>
@@ -160,8 +160,8 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
-          <div className="navbar-end">
-            <div className="flex justify-center items-center gap-1">
+          <div className="navbar-end flex-none w-auto">
+            <div className="flex justify-end items-center gap-1">
               {loading ? (
                 <FallingLines
                   color="#0e5660"
@@ -197,12 +197,12 @@ const Navbar = () => {
                 </div>
               ) : (
                 <>
-                  <Link to="/login" className="btn btn-ghost text-primary font-bold">
+                  <Link to="/login" className="btn btn-xs sm:btn-sm md:btn-md border border-primary/30 hover:border-primary bg-primary/5 hover:bg-primary/10 text-primary font-bold px-2 sm:px-4 rounded-lg sm:rounded-xl transition-all duration-300">
                     Login
                   </Link>
                   <Link
                     to="/register"
-                    className="btn-premium"
+                    className="btn-premium px-2 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2.5 text-[10px] sm:text-xs md:text-sm lg:text-base"
                   >
                     Register
                   </Link>
@@ -212,13 +212,13 @@ const Navbar = () => {
                 {/* STYLISH TOGGLE BUTTON */}
                 <button
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                  className="p-2.5 rounded-2xl bg-gray-100 dark:bg-slate-800 hover:bg-primary/10 transition-all duration-300 group shadow-inner ms-2"
+                  className="p-1.5 sm:p-2.5 rounded-lg sm:rounded-2xl bg-gray-100 dark:bg-slate-800 hover:bg-primary/10 transition-all duration-300 group shadow-inner ms-1 sm:ms-2"
                   aria-label="Toggle Theme"
                 >
                   {theme === "light" ? (
-                    <Moon className="h-6 w-6 text-slate-700" />
+                    <Moon className="h-5 w-5 sm:h-6 sm:w-6 text-slate-700" />
                   ) : (
-                    <Sun className="h-6 w-6 text-yellow-400" />
+                    <Sun className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400" />
                   )}
                 </button>
               </div>

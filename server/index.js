@@ -2,26 +2,47 @@ const express = require("express");
 const cors = require("cors");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const admin = require("firebase-admin");
+
+
 require("dotenv").config();
+
+// MongoDB Connection URI
+const uri = `mongodb+srv://${process.env.mongoDb_user}:${process.env.mongoDb_pass}@cluster0.81dwyib.mongodb.net/?appName=Cluster0`;
+
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Enable CORS with specific options for better security and reliability
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "https://home-nest-shakil.netlify.app"],
+  origin: ["https://home-nest-website.vercel.app", "http://localhost:5174", "http://localhost:5173", "https://home-nest-shakil.netlify.app","https://fantastic-taiyaki-da66f4.netlify.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
 }));
 
 app.use(express.json());
 
+// Setup MongoDB Client
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 // Global variables for collections
 let propertyCollection;
 let ratingsCollection;
 let userCollection;
 let wishlistCollection;
 let feedbackCollection;
+
+const db = client.db("home-nest-dbb");
+    propertyCollection = db.collection("nesthome");
+    ratingsCollection = db.collection("ratings");
+    userCollection = db.collection("users");
+    wishlistCollection = db.collection("wishlists");
+    feedbackCollection = db.collection("feedbacks");
 
 // Initialize Firebase Admin SDK safely
 try {
@@ -58,17 +79,8 @@ const verifyFirebaseToken = async (req, res, next) => {
   }
 };
 
-// MongoDB Connection URI
-const uri = `mongodb+srv://${process.env.mongoDb_user}:${process.env.mongoDb_pass}@cluster0.81dwyib.mongodb.net/?appName=Cluster0`;
 
-// Setup MongoDB Client
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+
 
 // --- ROUTES START ---
 
@@ -193,21 +205,18 @@ app.delete("/ratings/:id", verifyFirebaseToken, async (req, res) => {
 
 // --- ROUTES END ---
 
-async function run() {
-  try {
-    await client.connect();
-    console.log("Connected to MongoDB");
-    const db = client.db("home-nest-dbb");
-    propertyCollection = db.collection("nesthome");
-    ratingsCollection = db.collection("ratings");
-    userCollection = db.collection("users");
-    wishlistCollection = db.collection("wishlists");
-    feedbackCollection = db.collection("feedbacks");
-  } catch (error) {
-    console.error("DB Connection Error:", error.message);
-  }
-}
-run().catch(console.dir);
+// async function run() {
+//   try {
+//     // await client.connect();
+//     // await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    
+    
+//   } catch (error) {
+//     console.error("DB Connection Error:", error.message);
+//   }
+// }
+// run().catch(console.dir);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
