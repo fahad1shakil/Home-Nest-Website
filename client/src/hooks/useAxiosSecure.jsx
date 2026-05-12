@@ -7,7 +7,7 @@ const useAxiosSecure = () => {
 
   // Create a base Axios instance with our server URL
   const instance = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
   });
 
   // Add a 'Request Interceptor' to automatically add the user's security token

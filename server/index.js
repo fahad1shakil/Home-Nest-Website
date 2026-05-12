@@ -9,10 +9,11 @@ const port = process.env.PORT || 3000;
 
 // Enable CORS with specific options for better security and reliability
 app.use(cors({
-  origin: ["http://localhost:5173", "https://home-nest-shakil.netlify.app"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://home-nest-shakil.netlify.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
 }));
+
 app.use(express.json());
 
 // Global variables for collections
