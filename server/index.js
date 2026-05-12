@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 
 // Enable CORS with specific options for better security and reliability
 app.use(cors({
-  origin: ["https://home-nest-website.vercel.app", "http://localhost:5174", "http://localhost:5173", "https://home-nest-shakil.netlify.app","https://fantastic-taiyaki-da66f4.netlify.app"],
+  origin: ["https://home-nest-website.vercel.app", "http://localhost:5174", "http://localhost:5173", "https://home-nest-shakil.netlify.app","https://fantastic-taiyaki-da66f4.netlify.app","https://homenest-fahadshakil.netlify.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
 }));

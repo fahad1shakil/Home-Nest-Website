@@ -132,7 +132,7 @@ const Navbar = () => {
                 <Menu className="w-5 h-5 text-[#0F5660]" />
               )}
             </button>
-            <Link to="/" className="flex items-center gap-1 sm:gap-2 group">
+            <Link to="/" className="flex items-center gap-3 sm:gap-4 group">
               <div className="p-1 sm:p-1.5 bg-white rounded-lg sm:rounded-xl shadow-lg border border-gray-100 group-hover:scale-110 transition-transform duration-300">
                 <img className="w-6 h-6 sm:w-8 sm:h-8 object-contain" src={logo} alt="logo" />
               </div>

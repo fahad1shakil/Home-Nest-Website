@@ -27,7 +27,7 @@ const FeaturedProperties = () => {
   }, []);
 
   return (
-    <div className="mt-32 mb-12 max-w-7xl mx-auto px-4 dark:text-white">
+    <div className="mt-8 md:mt-12 mb-12 max-w-7xl mx-auto px-4 dark:text-white">
       <div className="text-center mb-16">
         <h2 className="text-primary font-black uppercase tracking-[0.3em] text-sm mb-4">Discover</h2>
         <h1 className="font-black text-4xl md:text-6xl text-neutral dark:text-white">

@@ -54,7 +54,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="w-full h-[80vh] relative">
+    <div className="w-full h-[60vh] md:h-[80vh] relative">
       {/* Swiper component configuration */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
